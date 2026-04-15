@@ -87,7 +87,7 @@
 
             <div class="hero__cta">
               <a
-                href="https://github.com/AngoZero/portkill/releases/download/v0.3.0/PortKill_0.3.0_aarch64.dmg"
+                href="https://github.com/AngoZero/portkill/releases/download/v0.4.0/PortKill_0.3.0_aarch64.dmg"
                 class="button button--primary button--lg"
                 aria-label="Download PortKill for macOS"
               >
@@ -99,7 +99,7 @@
               </a>
             </div>
 
-            <p class="hero__pill" data-i18n="hero.pill">v0.3.0 — macOS 14.0+</p>
+            <p class="hero__pill" data-i18n="hero.pill">v0.4.0 — macOS 14.0+</p>
           </div>
 
           <div class="hero__screenshot reveal">
@@ -353,7 +353,7 @@
                 <p class="download__card-os">macOS</p>
                 <p class="download__card-desc" data-i18n="download.mac.desc">macOS 14.0 (Sonoma) or later</p>
                 <a
-                  href="https://github.com/AngoZero/portkill/releases/download/v0.3.0/PortKill_0.3.0_aarch64.dmg"
+                  href="https://github.com/AngoZero/portkill/releases/download/v0.4.0/PortKill_0.3.0_aarch64.dmg"
                   class="button button--primary button--lg"
                   aria-label="Download PortKill DMG for macOS"
                 >
@@ -375,7 +375,7 @@
                 <p class="download__card-os">Windows</p>
                 <p class="download__card-desc" data-i18n="download.win.desc">Windows 10 or later</p>
                 <a
-                  href="https://github.com/AngoZero/portkill/releases/download/v0.3.0/PortKill_0.3.0_x64-setup.msi"
+                  href="https://github.com/AngoZero/portkill/releases/download/v0.4.0/PortKill_0.3.0_x64_en-US.msi"
                   class="button button--primary button--lg"
                   aria-label="Download PortKill MSI for Windows"
                 >
@@ -390,32 +390,6 @@
 
           </div>
 
-          <!-- Install instructions -->
-          <div class="install reveal">
-            <div class="install__header">
-              <span class="install__title" data-i18n="download.install.title">INSTALLATION</span>
-            </div>
-            <div class="install__tabs">
-              <button class="install__tab install__tab--active" data-tab="mac">macOS</button>
-              <button class="install__tab" data-tab="win">Windows</button>
-            </div>
-            <div class="install__panel" data-panel="mac">
-              <ol class="install__steps">
-                <li data-i18n="download.install.mac.step1">Download the .dmg and drag PortKill to Applications</li>
-                <li>
-                  <span data-i18n="download.install.mac.step2">Open Terminal and run:</span>
-                  <code class="install__code">sudo xattr -cr /Applications/PortKill.app</code>
-                </li>
-                <li data-i18n="download.install.mac.step3">Open PortKill normally</li>
-              </ol>
-            </div>
-            <div class="install__panel install__panel--hidden" data-panel="win">
-              <ol class="install__steps">
-                <li data-i18n="download.install.win">Click "More info" → "Run anyway" on the SmartScreen dialog</li>
-              </ol>
-            </div>
-            <p class="install__note" data-i18n="download.install.note">Open-source build without Apple/Microsoft signing. This is normal for apps distributed outside official stores.</p>
-          </div>
 
         </div>
       </section>
@@ -452,17 +426,6 @@
     </footer>
 
     <script type="module" src="/src/main.ts"></script>
-    <script>
-      document.querySelectorAll('.install__tab').forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          var panel = tab.dataset.tab;
-          document.querySelectorAll('.install__tab').forEach(function(t) { t.classList.remove('install__tab--active'); });
-          document.querySelectorAll('.install__panel').forEach(function(p) { p.classList.add('install__panel--hidden'); });
-          tab.classList.add('install__tab--active');
-          document.querySelector('[data-panel="' + panel + '"]').classList.remove('install__panel--hidden');
-        });
-      });
-    </script>
 
   </body>
 </html>
