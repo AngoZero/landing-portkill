@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary meta -->
+    <title data-i18n-content="meta.title">PortKill — Kill rogue ports. From your menu bar.</title>
+    <meta name="description" data-i18n-content="meta.description" content="Monitor TCP listening ports and kill processes with one click. Native macOS menu bar app. No dependencies, no setup." />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" data-i18n-content="meta.og.title" content="PortKill — Kill rogue ports. From your menu bar." />
+    <meta property="og:description" data-i18n-content="meta.og.description" content="Monitor TCP listening ports and kill processes with one click." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/style.css" />
+
+    <!-- Prevent flash of unstyled theme -->
+    <script>
+      (function() {
+        var s = localStorage.getItem('theme');
+        var t = s === 'light' || s === 'dark' ? s : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+  </head>
+
+  <body>
+
+    <!-- ─────────────────────── HEADER ─────────────────────── -->
+    <header class="site-header" role="banner">
+      <div class="container">
+        <div class="site-header__inner">
+
+          <a href="#" class="site-header__brand" aria-label="PortKill home">
+            <!-- Knife SVG inline -->
+            <svg class="site-header__brand-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="28" height="28" fill="var(--bg-elevated)"/>
+              <polygon points="7,23 20,5 22,7 10,25" fill="var(--text)"/>
+              <rect x="9" y="19" width="9" height="2.5" fill="var(--danger)"/>
+              <rect x="10.5" y="21.5" width="6" height="4.5" fill="var(--text-soft)"/>
+            </svg>
+            PORTKILL
+          </a>
+
+          <nav class="site-header__nav" aria-label="Main navigation">
+            <a href="#features" data-i18n="nav.features">Features</a>
+            <a href="#screenshots" data-i18n="nav.screenshots">Screenshots</a>
+            <a href="#download" data-i18n="nav.download">Download</a>
+          </nav>
+
+          <div class="site-header__controls">
+            <button id="lang-toggle" class="site-header__toggle" aria-label="Toggle language" data-i18n="toggle.lang">ES</button>
+            <button id="theme-toggle" class="site-header__toggle" aria-label="Toggle theme">
+              <!-- Sun icon (shown in dark mode) -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+            </button>
+          </div>
+
+          <button class="site-header__burger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ─────────────────────── HERO ─────────────────────── -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+
+          <div class="hero__content reveal">
+            <p class="eyebrow hero__eyebrow" data-i18n="hero.eyebrow">NATIVE MACOS MENU BAR UTILITY</p>
+            <h1 id="hero-title" class="hero__title" data-i18n-html="hero.title">Kill rogue ports.<br/>From your menu bar.</h1>
+            <p class="hero__sub" data-i18n="hero.sub">
+              Monitor every TCP listening socket on your Mac. Spot the process. Terminate it. One click.
+            </p>
+
+            <div class="hero__cta">
+              <a
+                href="https://github.com/AngoZero/portkill/releases/download/v0.1.0/PortKill.dmg"
+                class="button button--primary button--lg"
+                aria-label="Download PortKill for macOS"
+              >
+                <!-- Apple icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                <span data-i18n="hero.cta.mac">Download for macOS</span>
+              </a>
+            </div>
+
+            <p class="hero__pill" data-i18n="hero.pill">v0.1.0 — macOS 14.0+</p>
+          </div>
+
+          <div class="hero__screenshot reveal">
+            <img
+              src="/screenshots/mock-list-light.svg"
+              data-shot-light="/screenshots/mock-list-light.svg"
+              data-shot-dark="/screenshots/mock-list-dark.svg"
+              data-i18n-alt="hero.preview.alt"
+              alt="PortKill showing a list of TCP listening ports with process name, PID and KILL button"
+              width="960"
+              height="620"
+              loading="eager"
+            />
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ─────────────────────── FEATURES ─────────────────────── -->
+      <section id="features" class="features" aria-labelledby="features-title">
+        <div class="container">
+
+          <div class="features__header reveal">
+            <p class="eyebrow" data-i18n="features.eyebrow">FEATURES</p>
+            <h2 id="features-title" class="section-title" data-i18n="features.title">Sharp tools. Zero overhead.</h2>
+          </div>
+
+          <!-- Tier 1: Hero features -->
+          <div class="features__hero">
+
+            <article class="feature-card--hero reveal">
+              <!-- Eye icon -->
+              <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <h3 class="feature-card__title" data-i18n="feature.monitor.title">Port Monitor</h3>
+              <p class="feature-card__desc" data-i18n="feature.monitor.desc">
+                Scans all TCP LISTEN sockets via lsof. PID, port, protocol, bound address — all visible at a glance.
+              </p>
+            </article>
+
+            <article class="feature-card--hero reveal">
+              <!-- Scissors/knife icon -->
+              <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+                <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+                <line x1="14.47" y1="14.48" x2="20" y2="20"/>
+                <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+              </svg>
+              <h3 class="feature-card__title" data-i18n="feature.kill.title">One-Click Kill</h3>
+              <p class="feature-card__desc" data-i18n="feature.kill.desc">
+                Select a process, confirm, SIGTERM. No terminal, no sudo, no guessing which PID to kill.
+              </p>
+            </article>
+
+            <article class="feature-card--hero reveal">
+              <!-- Refresh icon -->
+              <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <polyline points="23 4 23 10 17 10"/>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+              </svg>
+              <h3 class="feature-card__title" data-i18n="feature.refresh.title">Auto-Refresh</h3>
+              <p class="feature-card__desc" data-i18n="feature.refresh.desc">
+                Polls every 2 seconds. New ports highlighted in green. Closed ports disappear. Always current.
+              </p>
+            </article>
+
+          </div>
+
+          <!-- Tier 2: Core features -->
+          <div class="features__core">
+
+            <article class="feature-card--core reveal">
+              <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="0"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+              <div>
+                <h3 class="feature-card__title" data-i18n="feature.tabs.title">Local &amp; System Tabs</h3>
+                <p class="feature-card__desc" data-i18n="feature.tabs.desc">Filter between your dev servers and system processes.</p>
+              </div>
+            </article>
+
+            <article class="feature-card--core reveal">
+              <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              <div>
+                <h3 class="feature-card__title" data-i18n="feature.details.title">Process Details</h3>
+                <p class="feature-card__desc" data-i18n="feature.details.desc">PID, user, protocol badge, bound address — all in monospace.</p>
+              </div>
+            </article>
+
+            <article class="feature-card--core reveal">
+              <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              <div>
+                <h3 class="feature-card__title" data-i18n="feature.confirm.title">Kill Confirmation</h3>
+                <p class="feature-card__desc" data-i18n="feature.confirm.desc">Modal with full process details before termination. No accidental kills.</p>
+              </div>
+            </article>
+
+            <article class="feature-card--core reveal">
+              <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <path d="M18 3a3 3 0 0 1 0 6 3 3 0 0 1 0-6z"/><path d="M6 15a3 3 0 0 1 0 6 3 3 0 0 1 0-6z"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5l2-1 4 2V6h10v3"/>
+              </svg>
+              <div>
+                <h3 class="feature-card__title" data-i18n="feature.menubar.title">Menu Bar Native</h3>
+                <p class="feature-card__desc" data-i18n="feature.menubar.desc">Lives in the menu bar. No Dock icon. No window. Always accessible.</p>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Tier 3: Extra pills -->
+          <div class="features__extras">
+
+            <article class="feature-card--extra reveal">
+              <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+              </svg>
+              <div>
+                <h3 class="feature-card__title" data-i18n="feature.brutalist.title">Brutalist UI</h3>
+                <p class="feature-card__desc" data-i18n="feature.brutalist.desc">Hard borders, monospace data, red kill buttons.</p>
+              </div>
+            </article>
+
+            <article class="feature-card--extra reveal">
+              <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <div>
+                <h3 class="feature-card__title" data-i18n="feature.zero.title">Zero Dependencies</h3>
+                <p class="feature-card__desc" data-i18n="feature.zero.desc">Pure Swift 6 + SwiftUI. No Homebrew, no frameworks.</p>
+              </div>
+            </article>
+
+            <article class="feature-card--extra reveal">
+              <svg class="feature-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="0"/><polyline points="8 21 12 17 16 21"/>
+              </svg>
+              <div>
+                <h3 class="feature-card__title" data-i18n="feature.macos.title">macOS 14+</h3>
+                <p class="feature-card__desc" data-i18n="feature.macos.desc">Built for modern macOS with strict concurrency.</p>
+              </div>
+            </article>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ─────────────────────── SCREENSHOTS ─────────────────────── -->
+      <section id="screenshots" class="screenshots" aria-labelledby="screenshots-title">
+        <div class="container">
+
+          <div class="screenshots__header reveal">
+            <p class="eyebrow" data-i18n="screenshots.eyebrow">IN ACTION</p>
+            <h2 id="screenshots-title" class="section-title" data-i18n="screenshots.title">See what you are killing.</h2>
+          </div>
+
+          <div class="screenshots__grid">
+
+            <figure class="screenshot-card reveal">
+              <img
+                class="screenshot-card__img"
+                src="/screenshots/mock-list-light.svg"
+                data-shot-light="/screenshots/mock-list-light.svg"
+                data-shot-dark="/screenshots/mock-list-dark.svg"
+                data-i18n-alt="screenshot.list.alt"
+                alt="PortKill showing 5 TCP listening ports with node, python3, postgres, redis and vite"
+                width="960"
+                height="620"
+                loading="lazy"
+              />
+              <figcaption data-i18n="screenshot.list.caption">Port List</figcaption>
+            </figure>
+
+            <figure class="screenshot-card reveal">
+              <img
+                class="screenshot-card__img"
+                src="/screenshots/mock-kill.svg"
+                data-shot-light="/screenshots/mock-kill.svg"
+                data-shot-dark="/screenshots/mock-kill.svg"
+                data-i18n-alt="screenshot.kill.alt"
+                alt="Kill confirmation modal showing full details of python3 process on port 8000"
+                width="960"
+                height="620"
+                loading="lazy"
+              />
+              <figcaption data-i18n="screenshot.kill.caption">Kill Confirmation</figcaption>
+            </figure>
+
+            <figure class="screenshot-card reveal">
+              <img
+                class="screenshot-card__img"
+                src="/screenshots/mock-list-light.svg"
+                data-shot-light="/screenshots/mock-list-light.svg"
+                data-shot-dark="/screenshots/mock-list-dark.svg"
+                data-i18n-alt="screenshot.tabs.alt"
+                alt="System tab showing system processes with SYSTEM badge instead of KILL button"
+                width="960"
+                height="620"
+                loading="lazy"
+              />
+              <figcaption data-i18n="screenshot.tabs.caption">System Tab</figcaption>
+            </figure>
+
+            <figure class="screenshot-card reveal">
+              <img
+                class="screenshot-card__img"
+                src="/screenshots/mock-empty.svg"
+                data-shot-light="/screenshots/mock-empty.svg"
+                data-shot-dark="/screenshots/mock-empty.svg"
+                data-i18n-alt="screenshot.empty.alt"
+                alt="PortKill empty state showing no ports are currently listening"
+                width="960"
+                height="620"
+                loading="lazy"
+              />
+              <figcaption data-i18n="screenshot.empty.caption">Empty State</figcaption>
+            </figure>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ─────────────────────── DOWNLOAD ─────────────────────── -->
+      <section id="download" class="download" aria-labelledby="download-title">
+        <div class="container">
+
+          <div class="download__header reveal">
+            <p class="eyebrow" data-i18n="download.eyebrow">GET STARTED</p>
+            <h2 id="download-title" class="section-title" data-i18n="download.title">Download PortKill</h2>
+            <p data-i18n="download.sub">Free, open-source, macOS only.</p>
+          </div>
+
+          <div class="download__card reveal">
+            <div class="download__card-inner">
+              <!-- Apple icon -->
+              <svg class="download__card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+              <p class="download__card-os">macOS</p>
+              <p class="download__card-desc" data-i18n="download.mac.desc">macOS 14.0 (Sonoma) or later</p>
+
+              <a
+                href="https://github.com/AngoZero/portkill/releases/download/v0.1.0/PortKill.dmg"
+                class="button button--primary button--lg"
+                aria-label="Download PortKill DMG for macOS"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span data-i18n="download.mac.btn">Download .dmg</span>
+              </a>
+            </div>
+          </div>
+
+          <p class="download__source reveal" data-i18n-html="download.source">
+            Or <a href="https://github.com/AngoZero/portkill" target="_blank" rel="noopener">build from source on GitHub</a>
+          </p>
+          <p class="download__note reveal" data-i18n="download.note">
+            Unsigned build — macOS Gatekeeper warning expected. Right-click → Open on first launch.
+          </p>
+
+        </div>
+      </section>
+
+      <!-- ─────────────────────── TECH STACK ─────────────────────── -->
+      <section class="tech" aria-label="Tech stack">
+        <div class="container">
+          <div class="tech__inner reveal">
+            <span class="tech__label" data-i18n="tech.label">Built with</span>
+            <span class="pill">Swift 6</span>
+            <span class="pill">SwiftUI</span>
+            <span class="pill">XcodeGen</span>
+            <span class="pill">lsof</span>
+            <span class="pill">GitHub Actions</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ─────────────────────── FOOTER ─────────────────────── -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="site-footer__inner">
+
+          <div class="site-footer__brand">
+            <svg class="site-footer__brand-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polygon points="7,23 20,5 22,7 10,25" fill="var(--text)"/>
+              <rect x="9" y="19" width="9" height="2.5" fill="var(--danger)"/>
+              <rect x="10.5" y="21.5" width="6" height="4.5" fill="var(--text-soft)"/>
+            </svg>
+            PORTKILL
+          </div>
+
+          <p class="site-footer__copy" data-i18n="footer.copy">© 2026 angozero. All rights reserved.</p>
+
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+
+  </body>
+</html>

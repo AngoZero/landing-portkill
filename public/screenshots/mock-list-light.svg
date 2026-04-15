@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" font-family="'SF Mono', 'Menlo', monospace">
+  <!-- Desktop background -->
+  <rect width="960" height="620" fill="#e8e8e8"/>
+  <!-- Menu bar -->
+  <rect width="960" height="28" fill="#f0f0f0"/>
+  <text x="16" y="19" font-size="13" fill="#1a1a1a" font-family="system-ui, sans-serif" font-weight="600">Finder</text>
+  <text x="900" y="19" font-size="12" fill="#1a1a1a" font-family="system-ui, sans-serif">✂</text>
+  <text x="920" y="19" font-size="11" fill="#555" font-family="system-ui, sans-serif">12:34</text>
+
+  <!-- App window shadow -->
+  <rect x="244" y="66" width="476" height="414" rx="0" fill="rgba(0,0,0,0.18)"/>
+  <!-- App window -->
+  <rect x="240" y="62" width="476" height="414" rx="0" fill="#ffffff" stroke="#262626" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="240" y="62" width="476" height="52" fill="#ffffff" stroke="#262626" stroke-width="0"/>
+  <line x1="240" y1="114" x2="716" y2="114" stroke="#262626" stroke-width="2"/>
+  <!-- Title -->
+  <text x="264" y="94" font-size="15" font-weight="700" fill="#1a1a1a" letter-spacing="2">PORTKILL</text>
+  <!-- Refresh button -->
+  <rect x="648" y="72" width="54" height="30" fill="#141414" rx="0"/>
+  <text x="675" y="92" font-size="12" fill="#ffffff" text-anchor="middle">↻</text>
+
+  <!-- Tab bar -->
+  <rect x="240" y="114" width="238" height="38" fill="#141414"/>
+  <text x="358" y="138" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1">LOCAL</text>
+  <rect x="478" y="114" width="238" height="38" fill="#f5f5f5"/>
+  <text x="596" y="138" font-size="11" font-weight="700" fill="#6b6b6b" text-anchor="middle" letter-spacing="1">SYSTEM</text>
+  <line x1="478" y1="114" x2="478" y2="152" stroke="#262626" stroke-width="2"/>
+  <line x1="240" y1="152" x2="716" y2="152" stroke="#262626" stroke-width="2"/>
+
+  <!-- New entry highlight bar -->
+  <rect x="240" y="152" width="4" height="52" fill="#1db954"/>
+
+  <!-- Row 1 - node (new, highlighted) -->
+  <rect x="240" y="152" width="476" height="52" fill="#f0fdf4"/>
+  <line x1="240" y1="204" x2="716" y2="204" stroke="#cccccc" stroke-width="1"/>
+  <text x="264" y="175" font-size="13" font-weight="700" fill="#1a1a1a">node</text>
+  <text x="264" y="193" font-size="11" fill="#6b6b6b">PID 1284</text>
+  <text x="390" y="175" font-size="12" font-weight="700" fill="#1a1a1a">:3000</text>
+  <text x="390" y="193" font-size="11" fill="#6b6b6b">127.0.0.1</text>
+  <rect x="510" y="162" width="32" height="18" fill="#f0f0f0" rx="0" stroke="#cccccc" stroke-width="1"/>
+  <text x="526" y="175" font-size="9" fill="#6b6b6b" text-anchor="middle" font-weight="700">TCP</text>
+  <rect x="620" y="162" width="72" height="28" fill="#d10f0f" rx="0"/>
+  <text x="656" y="181" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">KILL</text>
+
+  <!-- Row 2 - python -->
+  <rect x="240" y="204" width="476" height="52" fill="#ffffff"/>
+  <line x1="240" y1="256" x2="716" y2="256" stroke="#cccccc" stroke-width="1"/>
+  <text x="264" y="227" font-size="13" font-weight="700" fill="#1a1a1a">python3</text>
+  <text x="264" y="245" font-size="11" fill="#6b6b6b">PID 5621</text>
+  <text x="390" y="227" font-size="12" font-weight="700" fill="#1a1a1a">:8000</text>
+  <text x="390" y="245" font-size="11" fill="#6b6b6b">127.0.0.1</text>
+  <rect x="510" y="214" width="32" height="18" fill="#f0f0f0" rx="0" stroke="#cccccc" stroke-width="1"/>
+  <text x="526" y="227" font-size="9" fill="#6b6b6b" text-anchor="middle" font-weight="700">TCP</text>
+  <rect x="620" y="214" width="72" height="28" fill="#d10f0f" rx="0"/>
+  <text x="656" y="233" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">KILL</text>
+
+  <!-- Row 3 - postgres -->
+  <rect x="240" y="256" width="476" height="52" fill="#f7f7f7"/>
+  <line x1="240" y1="308" x2="716" y2="308" stroke="#cccccc" stroke-width="1"/>
+  <text x="264" y="279" font-size="13" font-weight="700" fill="#1a1a1a">postgres</text>
+  <text x="264" y="297" font-size="11" fill="#6b6b6b">PID 9012</text>
+  <text x="390" y="279" font-size="12" font-weight="700" fill="#1a1a1a">:5432</text>
+  <text x="390" y="297" font-size="11" fill="#6b6b6b">127.0.0.1</text>
+  <rect x="510" y="266" width="32" height="18" fill="#f0f0f0" rx="0" stroke="#cccccc" stroke-width="1"/>
+  <text x="526" y="279" font-size="9" fill="#6b6b6b" text-anchor="middle" font-weight="700">TCP</text>
+  <rect x="620" y="266" width="72" height="28" fill="#d10f0f" rx="0"/>
+  <text x="656" y="285" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">KILL</text>
+
+  <!-- Row 4 - redis -->
+  <rect x="240" y="308" width="476" height="52" fill="#ffffff"/>
+  <line x1="240" y1="360" x2="716" y2="360" stroke="#cccccc" stroke-width="1"/>
+  <text x="264" y="331" font-size="13" font-weight="700" fill="#1a1a1a">redis-server</text>
+  <text x="264" y="349" font-size="11" fill="#6b6b6b">PID 3456</text>
+  <text x="390" y="331" font-size="12" font-weight="700" fill="#1a1a1a">:6379</text>
+  <text x="390" y="349" font-size="11" fill="#6b6b6b">127.0.0.1</text>
+  <rect x="510" y="318" width="32" height="18" fill="#f0f0f0" rx="0" stroke="#cccccc" stroke-width="1"/>
+  <text x="526" y="331" font-size="9" fill="#6b6b6b" text-anchor="middle" font-weight="700">TCP</text>
+  <rect x="620" y="318" width="72" height="28" fill="#d10f0f" rx="0"/>
+  <text x="656" y="337" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">KILL</text>
+
+  <!-- Row 5 - vite -->
+  <rect x="240" y="360" width="476" height="52" fill="#f7f7f7"/>
+  <line x1="240" y1="412" x2="716" y2="412" stroke="#cccccc" stroke-width="1"/>
+  <text x="264" y="383" font-size="13" font-weight="700" fill="#1a1a1a">vite</text>
+  <text x="264" y="401" font-size="11" fill="#6b6b6b">PID 7890</text>
+  <text x="390" y="383" font-size="12" font-weight="700" fill="#1a1a1a">:5173</text>
+  <text x="390" y="401" font-size="11" fill="#6b6b6b">127.0.0.1</text>
+  <rect x="510" y="370" width="32" height="18" fill="#f0f0f0" rx="0" stroke="#cccccc" stroke-width="1"/>
+  <text x="526" y="383" font-size="9" fill="#6b6b6b" text-anchor="middle" font-weight="700">TCP</text>
+  <rect x="620" y="370" width="72" height="28" fill="#d10f0f" rx="0"/>
+  <text x="656" y="389" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">KILL</text>
+
+  <!-- Footer -->
+  <line x1="240" y1="412" x2="716" y2="412" stroke="#262626" stroke-width="2"/>
+  <rect x="240" y="412" width="476" height="64" fill="#ffffff"/>
+  <text x="264" y="442" font-size="11" fill="#6b6b6b" font-weight="700">5 PORTS LISTENING</text>
+  <text x="264" y="460" font-size="10" fill="#999999">Last scan: just now</text>
+</svg>

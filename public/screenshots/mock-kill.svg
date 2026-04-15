@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" font-family="'SF Mono', 'Menlo', monospace">
+  <!-- Desktop background -->
+  <rect width="960" height="620" fill="#1c1c1e"/>
+  <!-- Menu bar -->
+  <rect width="960" height="28" fill="#2d2d2f"/>
+  <text x="16" y="19" font-size="13" fill="#f5f5f5" font-family="system-ui, sans-serif" font-weight="600">Finder</text>
+  <text x="900" y="19" font-size="12" fill="#f5f5f5" font-family="system-ui, sans-serif">✂</text>
+
+  <!-- App window (dimmed/blurred behind modal) -->
+  <rect x="240" y="62" width="476" height="414" rx="0" fill="#ffffff" opacity="0.4" stroke="#262626" stroke-width="2"/>
+
+  <!-- Modal overlay -->
+  <rect x="240" y="62" width="476" height="414" fill="rgba(0,0,0,0.55)"/>
+
+  <!-- Modal card -->
+  <rect x="299" y="152" width="358" height="234" fill="#ffffff" stroke="#1a1a1a" stroke-width="3"/>
+
+  <!-- Red top bar -->
+  <rect x="299" y="152" width="358" height="6" fill="#d10f0f"/>
+
+  <!-- Modal content -->
+  <text x="478" y="195" font-size="13" font-weight="700" fill="#1a1a1a" text-anchor="middle" letter-spacing="1">TERMINATE PROCESS?</text>
+  <line x1="299" y1="208" x2="657" y2="208" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- Process details -->
+  <text x="323" y="236" font-size="11" fill="#6b6b6b">PROCESS</text>
+  <text x="323" y="252" font-size="13" font-weight="700" fill="#1a1a1a">python3</text>
+
+  <text x="478" y="236" font-size="11" fill="#6b6b6b">PORT</text>
+  <text x="478" y="252" font-size="13" font-weight="700" fill="#d10f0f">:8000</text>
+
+  <text x="323" y="278" font-size="11" fill="#6b6b6b">PID</text>
+  <text x="323" y="294" font-size="13" font-weight="700" fill="#1a1a1a">5621</text>
+
+  <text x="478" y="278" font-size="11" fill="#6b6b6b">PROTOCOL</text>
+  <text x="478" y="294" font-size="12" font-weight="700" fill="#1a1a1a">TCP</text>
+
+  <text x="323" y="318" font-size="11" fill="#6b6b6b">ADDRESS</text>
+  <text x="323" y="334" font-size="12" font-weight="700" fill="#1a1a1a">127.0.0.1</text>
+
+  <!-- Buttons -->
+  <rect x="323" y="354" width="148" height="20" fill="#f5f5f5" stroke="#cccccc" stroke-width="1"/>
+  <text x="397" y="368" font-size="11" fill="#4a4a4a" text-anchor="middle">Cancel</text>
+
+  <rect x="485" y="354" width="148" height="20" fill="#d10f0f"/>
+  <text x="559" y="368" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">KILL</text>
+</svg>
