@@ -541,9 +541,17 @@ ul { list-style: none; }
   margin-top: 0.75rem;
 }
 
+.download__cards {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .download__card {
-  max-width: 480px;
-  margin: 0 auto;
+  flex: 1;
+  min-width: 260px;
+  max-width: 420px;
   border: var(--border-width) solid var(--border);
   background: var(--bg-elevated);
   overflow: hidden;
